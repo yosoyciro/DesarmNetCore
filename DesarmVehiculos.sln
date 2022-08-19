@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi.data", "webapi.data\webapi.data.csproj", "{7BFBC858-B5EC-47BA-8020-FC4B131C6205}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.data", "webapi.data\webapi.data.csproj", "{7BFBC858-B5EC-47BA-8020-FC4B131C6205}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi.business", "webapi.business\webapi.business.csproj", "{CDB58897-F561-401C-853B-9D39FD1BD15F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.business", "webapi.business\webapi.business.csproj", "{CDB58897-F561-401C-853B-9D39FD1BD15F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi.api", "webapi.api\webapi.api.csproj", "{35DEDC0D-B2A0-4C69-BA43-8CA5375E61D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.api", "webapi.api\webapi.api.csproj", "{35DEDC0D-B2A0-4C69-BA43-8CA5375E61D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi.core", "webapi.core\webapi.core.csproj", "{D194F6CA-3130-4984-AA5E-E9B996BD2FBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.core", "webapi.core\webapi.core.csproj", "{D194F6CA-3130-4984-AA5E-E9B996BD2FBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi.root", "webapi.root\webapi.root.csproj", "{9524BEF0-0671-4DC0-99B3-4CBB86F123F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.root", "webapi.root\webapi.root.csproj", "{9524BEF0-0671-4DC0-99B3-4CBB86F123F7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.api.tests", "webapi.data.tests\webapi.api.tests.csproj", "{CAD429EC-39FB-41DA-8C42-224352EEC16E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7BFBC858-B5EC-47BA-8020-FC4B131C6205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -86,5 +85,23 @@ Global
 		{9524BEF0-0671-4DC0-99B3-4CBB86F123F7}.Release|x64.Build.0 = Release|Any CPU
 		{9524BEF0-0671-4DC0-99B3-4CBB86F123F7}.Release|x86.ActiveCfg = Release|Any CPU
 		{9524BEF0-0671-4DC0-99B3-4CBB86F123F7}.Release|x86.Build.0 = Release|Any CPU
+		{CAD429EC-39FB-41DA-8C42-224352EEC16E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAD429EC-39FB-41DA-8C42-224352EEC16E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAD429EC-39FB-41DA-8C42-224352EEC16E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CAD429EC-39FB-41DA-8C42-224352EEC16E}.Debug|x64.Build.0 = Debug|Any CPU
+		{CAD429EC-39FB-41DA-8C42-224352EEC16E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CAD429EC-39FB-41DA-8C42-224352EEC16E}.Debug|x86.Build.0 = Debug|Any CPU
+		{CAD429EC-39FB-41DA-8C42-224352EEC16E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAD429EC-39FB-41DA-8C42-224352EEC16E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAD429EC-39FB-41DA-8C42-224352EEC16E}.Release|x64.ActiveCfg = Release|Any CPU
+		{CAD429EC-39FB-41DA-8C42-224352EEC16E}.Release|x64.Build.0 = Release|Any CPU
+		{CAD429EC-39FB-41DA-8C42-224352EEC16E}.Release|x86.ActiveCfg = Release|Any CPU
+		{CAD429EC-39FB-41DA-8C42-224352EEC16E}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86000D36-97F8-424F-835E-ACE6D064177D}
 	EndGlobalSection
 EndGlobal
