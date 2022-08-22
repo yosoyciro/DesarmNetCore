@@ -15,8 +15,8 @@ namespace webapi.data.Repositorios
         //Task<IReadOnlyList<Vehiculos>> ObtenerPorMarca(int pMarcasId);
         //Task<IReadOnlyList<Vehiculos>> ObtenerPorMarcaModelo(int pMarcasId, int pModelosId);
         //Task<IReadOnlyList<Vehiculos>> BuscarVehiculosMultiple(int pDepositosIslasUbicacionesId, string pPatente, int pMarcasId, int pModelosId, int pMostrarCompactados, string pNroChasis, int pLegajo, int pDepositosId);
-        void Actualizar(Vehiculos pVehiculo);
-        Task ActualizarUbicacion ();
+        Task Actualizar(Vehiculos pVehiculo);
+        Task ActualizarUbicacion(int pDepositosIslasUbicacionesId, Vehiculos pVehiculoActualizar);
         
         
     }

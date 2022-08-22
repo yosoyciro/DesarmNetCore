@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.core.Modelos;
-using webapi.business.Servicios.Implementaciones;
 using webapi.root;
 using webapi.data.Repositorios;
-using webapi.business.Servicios;
 using AutoMapper;
 using webapi.api.Recursos;
 
@@ -18,22 +16,22 @@ namespace webapi.api.Controllers
     [ApiController]
     public class ArticulosStockController : ControllerBase
     {
-        private IArticulosStockServicio _articulosStockServicio;
+        private IUnitOfWork unitOfWork;
         private readonly IMapper _mapper;
 
-        public ArticulosStockController(IArticulosStockServicio _articulosStockServicio, IMapper mapper)
+        public ArticulosStockController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this._mapper = mapper;
-            this._articulosStockServicio = _articulosStockServicio;
+            this.unitOfWork = unitOfWork;
         }
 
         [HttpGet("ListarTodos")]
-        public async Task<IEnumerable<ArticulosStock>> ListarTodos() => await _articulosStockServicio.ListarTodos();
+        public async Task<IEnumerable<ArticulosStock>> ListarTodos() => await unitOfWork.ArticulosStockRepositorio.GetAll();
 
         [HttpGet("ObtenerPorVehiculo")]
         public async Task<ActionResult<IEnumerable<ArticulosStockRecurso>>> ObtenerPorVehiculo(int pVehiculosId)
         {
-            var articulosStock = await _articulosStockServicio.ObtenerPorVehiculo(pVehiculosId);
+            var articulosStock = await unitOfWork.ArticulosStockRepositorio.ObtenerPorVehiculo(pVehiculosId);
             var articulosStockRecurso = _mapper.Map<IEnumerable<ArticulosStock>, IEnumerable<ArticulosStockRecurso>>(articulosStock);
 
             return Ok(articulosStockRecurso);
@@ -42,7 +40,7 @@ namespace webapi.api.Controllers
         [HttpGet("ObtenerPorFormulario04D")]
         public async Task<ActionResult<IEnumerable<ArticulosStockRecurso>>> ObtenerPorFormulario04D(int pFormularios04DId   )
         {
-            var articulosStock = await _articulosStockServicio.ObtenerPorFormulario04D(pFormularios04DId);
+            var articulosStock = await unitOfWork.ArticulosStockRepositorio.ObtenerPorFormulario04D(pFormularios04DId);
             var articulosStockRecurso = _mapper.Map<IEnumerable<ArticulosStock>, IEnumerable<ArticulosStockRecurso>>(articulosStock);
 
             return Ok(articulosStockRecurso);

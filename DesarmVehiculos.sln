@@ -5,8 +5,6 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.data", "webapi.data\webapi.data.csproj", "{7BFBC858-B5EC-47BA-8020-FC4B131C6205}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.business", "webapi.business\webapi.business.csproj", "{CDB58897-F561-401C-853B-9D39FD1BD15F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.api", "webapi.api\webapi.api.csproj", "{35DEDC0D-B2A0-4C69-BA43-8CA5375E61D3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi.core", "webapi.core\webapi.core.csproj", "{D194F6CA-3130-4984-AA5E-E9B996BD2FBF}"
@@ -37,18 +35,6 @@ Global
 		{7BFBC858-B5EC-47BA-8020-FC4B131C6205}.Release|x64.Build.0 = Release|Any CPU
 		{7BFBC858-B5EC-47BA-8020-FC4B131C6205}.Release|x86.ActiveCfg = Release|Any CPU
 		{7BFBC858-B5EC-47BA-8020-FC4B131C6205}.Release|x86.Build.0 = Release|Any CPU
-		{CDB58897-F561-401C-853B-9D39FD1BD15F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CDB58897-F561-401C-853B-9D39FD1BD15F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CDB58897-F561-401C-853B-9D39FD1BD15F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{CDB58897-F561-401C-853B-9D39FD1BD15F}.Debug|x64.Build.0 = Debug|Any CPU
-		{CDB58897-F561-401C-853B-9D39FD1BD15F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{CDB58897-F561-401C-853B-9D39FD1BD15F}.Debug|x86.Build.0 = Debug|Any CPU
-		{CDB58897-F561-401C-853B-9D39FD1BD15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CDB58897-F561-401C-853B-9D39FD1BD15F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CDB58897-F561-401C-853B-9D39FD1BD15F}.Release|x64.ActiveCfg = Release|Any CPU
-		{CDB58897-F561-401C-853B-9D39FD1BD15F}.Release|x64.Build.0 = Release|Any CPU
-		{CDB58897-F561-401C-853B-9D39FD1BD15F}.Release|x86.ActiveCfg = Release|Any CPU
-		{CDB58897-F561-401C-853B-9D39FD1BD15F}.Release|x86.Build.0 = Release|Any CPU
 		{35DEDC0D-B2A0-4C69-BA43-8CA5375E61D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{35DEDC0D-B2A0-4C69-BA43-8CA5375E61D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35DEDC0D-B2A0-4C69-BA43-8CA5375E61D3}.Debug|x64.ActiveCfg = Debug|Any CPU

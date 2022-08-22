@@ -12,6 +12,6 @@ namespace webapi.data.Repositorios
         Task<Remitos> ObtenerPorIdConDetalle(int pRemitosId);
         Task<Remitos> ObtenerPorIdConDetalleYAuditoria(int pRemitosId);
         Task<IEnumerable<Remitos>> ObtenerPorFechas(int pFechaDesde, int pFechaHasta, string pTipo);
-        Task<Remitos> AgregarAsync(Remitos pRemito);
+        Task Anular(Remitos pRemito);
     }
 }

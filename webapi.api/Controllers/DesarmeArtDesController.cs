@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.core.Modelos;
-using webapi.business.Servicios.Implementaciones;
 using webapi.root;
 using webapi.data.Repositorios;
-using webapi.business.Servicios;
 using AutoMapper;
 using webapi.api.Recursos;
 
@@ -18,46 +16,46 @@ namespace webapi.api.Controllers
     [ApiController]
     public class DesarmeArtDesController : ControllerBase
     {
-        private IDesarmeArtDesServicio _desarmeArtDesServicio;
+        private IUnitOfWork unitOfWork;
         private readonly IMapper _mapper;
 
-        public DesarmeArtDesController(IDesarmeArtDesServicio _desarmeArtDesServicio, IMapper mapper)
+        public DesarmeArtDesController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this._mapper = mapper;
-            this._desarmeArtDesServicio = _desarmeArtDesServicio;
+            this.unitOfWork = unitOfWork;
         }
 
         [HttpGet("ListarTodos")]
-        public async Task<IEnumerable<DesarmeArtDes>> ListarTodos() => await _desarmeArtDesServicio.ListarTodos();
+        public async Task<IEnumerable<DesarmeArtDes>> ListarTodos() => await unitOfWork.DesarmeArtDesRepositorio.GetAll();
 
         [HttpGet("ObtenerPorVehiculo")]
         public async Task<ActionResult<DesarmeArtDesRecurso>> ObtenerPorVehiculo(int pVehiculosId)
         {
-            var desarmeArtDes = await _desarmeArtDesServicio.ObtenerPorVehiculo(pVehiculosId);
+            var desarmeArtDes = await unitOfWork.DesarmeArtDesRepositorio.ObtenerPorVehiculo(pVehiculosId);
             var desarmeArtDesRecurso = _mapper.Map<DesarmeArtDes, DesarmeArtDesRecurso>(desarmeArtDes);
 
             return Ok(desarmeArtDesRecurso);
 
         }
-        [HttpPut("Actualizar")]
-        public async Task<ActionResult<DesarmeArtDesRecurso>> ActualizarVehiculo(int pId, [FromBody] DesarmeArtDesRecurso pDesarmeArtDes)
-        {
-            //Guardo
-            var desarmeArtDesActualizar = await _desarmeArtDesServicio.ObtenerPorIdConDatos(pId);
+        //[HttpPut("Actualizar")]
+        //public async Task<ActionResult<DesarmeArtDesRecurso>> ActualizarVehiculo(int pId, [FromBody] DesarmeArtDesRecurso pDesarmeArtDes)
+        //{
+        //    //Guardo
+        //    var desarmeArtDesActualizar = await unitOfWork.DesarmeArtDesRepositorio.ObtenerPorIdConDatos(pId);
 
-            if (desarmeArtDesActualizar == null)
-            {
-                return NotFound();
-            }
+        //    if (desarmeArtDesActualizar == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var desarmeArtDes = _mapper.Map<DesarmeArtDesRecurso, DesarmeArtDes>(pDesarmeArtDes);
-            await _desarmeArtDesServicio.Actualizar(desarmeArtDesActualizar, desarmeArtDes);
+        //    var desarmeArtDes = _mapper.Map<DesarmeArtDesRecurso, DesarmeArtDes>(pDesarmeArtDes);
+        //    await unitOfWork.DesarmeArtDesRepositorio.(desarmeArtDesActualizar, desarmeArtDes);
 
-            var desarmeArtDesActualizado = await _desarmeArtDesServicio.ObtenerPorIdConDatos(pId);
+        //    var desarmeArtDesActualizado = await _desarmeArtDesServicio.ObtenerPorIdConDatos(pId);
 
-            var desarmeArtDesActualizadoRecurso = _mapper.Map<DesarmeArtDes, DesarmeArtDesRecurso>(desarmeArtDesActualizado);
+        //    var desarmeArtDesActualizadoRecurso = _mapper.Map<DesarmeArtDes, DesarmeArtDesRecurso>(desarmeArtDesActualizado);
 
-            return Ok(desarmeArtDesActualizadoRecurso);
-        }
+        //    return Ok(desarmeArtDesActualizadoRecurso);
+        //}
     }
 }

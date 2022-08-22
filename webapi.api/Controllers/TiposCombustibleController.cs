@@ -5,12 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.core.Modelos;
-using webapi.business.Servicios.Implementaciones;
-using webapi.root;
-using webapi.data.Repositorios;
-using webapi.business.Servicios;
 using AutoMapper;
 using webapi.api.Recursos;
+using webapi.data.Repositorios;
 
 namespace webapi.api.Controllers
 {
@@ -18,16 +15,16 @@ namespace webapi.api.Controllers
     [ApiController]
     public class TiposCombustibleController : ControllerBase
     {
-        private ITiposCombustibleServicio _servicio;
+        private IUnitOfWork unitOfWork;
         private readonly IMapper _mapper;
 
-        public TiposCombustibleController(ITiposCombustibleServicio _servicio, IMapper mapper)
+        public TiposCombustibleController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this._mapper = mapper;
-            this._servicio = _servicio;
+            this.unitOfWork = unitOfWork;
         }
 
         [HttpGet("ListarTodos")]
-        public async Task<IEnumerable<TiposCombustible>> ListarTodos() => await _servicio.ListarTodos();
+        public async Task<IEnumerable<TiposCombustible>> ListarTodos() => await unitOfWork.TiposCombustibleRepositorio.GetAll();
     }
 }

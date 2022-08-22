@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.core.Modelos;
-using webapi.business.Servicios.Implementaciones;
 using webapi.root;
 using webapi.data.Repositorios;
-using webapi.business.Servicios;
 using AutoMapper;
 using webapi.api.Recursos;
 
@@ -18,16 +16,16 @@ namespace webapi.api.Controllers
     [ApiController]
     public class VehiculosTipoController : ControllerBase
     {
-        private IVehiculosTipoServicio _servicio;
+        private IUnitOfWork unitOfWork;
         private readonly IMapper _mapper;
 
-        public VehiculosTipoController(IVehiculosTipoServicio _servicio, IMapper mapper)
+        public VehiculosTipoController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this._mapper = mapper;
-            this._servicio = _servicio;
+            this.unitOfWork = unitOfWork;
         }
 
         [HttpGet("ListarTodos")]
-        public async Task<IEnumerable<VehiculosTipo>> ListarTodos() => await _servicio.ListarTodos();
+        public async Task<IEnumerable<VehiculosTipo>> ListarTodos() => await unitOfWork.VehiculosTipoRepositorio.GetAll();
     }
 }

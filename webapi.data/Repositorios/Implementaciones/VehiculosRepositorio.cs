@@ -18,14 +18,16 @@ namespace webapi.data.Repositorios.Implementaciones
             get { return context as DesarmDatacenterContext; }
         }
 
-        public void Actualizar(Vehiculos pVehiculo)
+        public async Task Actualizar(Vehiculos pVehiculo)
         {            
             context.Entry(pVehiculo).State = EntityState.Modified;
+            await context.SaveChangesAsync();
         }
 
-        public Task ActualizarUbicacion()
+        public async Task ActualizarUbicacion(int pDepositosIslasUbicacionesId, Vehiculos pVehiculoActualizar)
         {
-            throw new NotImplementedException();
+            pVehiculoActualizar.DepositosIslasUbicacionesId = pDepositosIslasUbicacionesId;
+            await context.SaveChangesAsync();
         }
     }
 }

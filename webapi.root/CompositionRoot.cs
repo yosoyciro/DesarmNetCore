@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using webapi.data;
-using webapi.business.Servicios;
-using webapi.business.Servicios.Implementaciones;
 using webapi.data.Repositorios;
 using webapi.data.Repositorios.Implementaciones;
 using Microsoft.Extensions.Configuration;
@@ -19,29 +17,7 @@ namespace webapi.root
             services.AddDbContext<DesarmDatacenterContext>(opts => opts.UseSqlServer(configuration.GetConnectionString("ConexionDesarmDatacenter")));
             services.AddScoped<DesarmDatacenterContext>();
             services.AddScoped(typeof(IRepositorio<>), typeof(Repositorio<>));
-
-            //Servicios
-            services
-                .AddScoped<ICategoriasServicio, CategoriasServicio>()
-                .AddScoped<IColoresServicio, ColoresServicio>()
-                .AddScoped<ICompaniasServicio, CompaniasServicio>()
-                .AddScoped<IDepositosServicio, DepositosServicio>()
-                .AddScoped<IEmpleadosServicio, EmpleadosServicio>()
-                .AddScoped<IMarcasServicio, MarcasServicio>()
-                .AddScoped<IMarcasChasisServicio, MarcasChasisServicio>()
-                .AddScoped<IMarcasMotorServicio, MarcasMotorServicio>()
-                .AddScoped<IModelosServicio, ModelosServicio>()
-                .AddScoped<ITiposCombustibleServicio, TiposCombustibleServicio>()
-                .AddScoped<IVehiculosServicio, VehiculosServicio>()
-                .AddScoped<IVehiculosTipoServicio, VehiculosTipoServicio>()
-                .AddScoped<IFormulario04DServicio, Formulario04DServicio>()
-                .AddScoped<IDepositosIslasUbicacionesServicio, DepositosIslasUbicacionesServicio>()
-                .AddScoped<IArticulosStockServicio, ArticulosStockServicio>()
-                .AddScoped<IArticulosDescarteServicio, ArticulosDescarteServicio>()
-                .AddScoped<IDesarmeArtDesServicio, DesarmeArtDesServicio>()
-                .AddScoped<IDesarmeArtDesDetalleServicio, DesarmeArtDesDetalleServicio>()
-                .AddScoped<IRemitosServicio, RemitosServicio>()
-                .AddScoped<IArticulosVariosServicio, ArticulosVariosServicio>();
+           
 
             //Repositorios            
             services

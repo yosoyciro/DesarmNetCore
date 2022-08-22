@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.core.Modelos;
-using webapi.business.Servicios.Implementaciones;
 using webapi.root;
 using webapi.data.Repositorios;
-using webapi.business.Servicios;
 using AutoMapper;
 using webapi.api.Recursos;
 
@@ -18,22 +16,22 @@ namespace webapi.api.Controllers
     [ApiController]
     public class DepositosIslasUbicacionesController : ControllerBase
     {
-        private IDepositosIslasUbicacionesServicio _servicio;
+        private IUnitOfWork unitOfWork;
         private readonly IMapper _mapper;
 
-        public DepositosIslasUbicacionesController(IDepositosIslasUbicacionesServicio _servicio, IMapper mapper)
+        public DepositosIslasUbicacionesController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this._mapper = mapper;
-            this._servicio = _servicio;
+            this.unitOfWork = unitOfWork;
         }
 
         [HttpGet("ListarTodos")]
-        public async Task<IEnumerable<DepositosIslasUbicaciones>> ListarTodos() => await _servicio.ListarTodos();
+        public async Task<IEnumerable<DepositosIslasUbicaciones>> ListarTodos() => await unitOfWork.DepositosIslasUbcacionesRepositorio.GetAll();
 
         [HttpGet("ListarUbicacionesLibres")]
-        public async Task<IEnumerable<DepositosIslasUbicaciones>> ListarUbicacionesLibres() => await _servicio.ListarUbicacionesLibres();
+        public async Task<IEnumerable<DepositosIslasUbicaciones>> ListarUbicacionesLibres() => await unitOfWork.DepositosIslasUbcacionesRepositorio.ListarUbicacionesLibres();
 
         [HttpGet("LibrePorPrioridad")]
-        public async Task<DepositosIslasUbicaciones> LibrePorPrioridad() => await _servicio.ObtenerLibrePorPrioridad();
+        public async Task<DepositosIslasUbicaciones> LibrePorPrioridad() => await unitOfWork.DepositosIslasUbcacionesRepositorio.ObtenerUbicacionesLibres();
     }
 }

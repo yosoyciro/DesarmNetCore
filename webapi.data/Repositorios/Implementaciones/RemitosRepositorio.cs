@@ -48,10 +48,10 @@ namespace webapi.data.Repositorios.Implementaciones
                 .ToListAsync();
         }
 
-        public async Task<Remitos> AgregarAsync(Remitos pRemito)
+        public async Task Anular(Remitos pRemito)
         {
-            await context.Set<Remitos>().AddAsync(pRemito);
-            return pRemito;
+            pRemito.ESTADO = "A";
+            await context.SaveChangesAsync();            
         }
     }
 }

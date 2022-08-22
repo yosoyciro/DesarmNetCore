@@ -6,10 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using webapi.core.Modelos;
-using webapi.business.Servicios.Implementaciones;
 using webapi.root;
 using webapi.data.Repositorios;
-using webapi.business.Servicios;
 using AutoMapper;
 using webapi.api.Recursos;
 using webapi.api.Validadores;
@@ -20,19 +18,19 @@ namespace webapi.api.Controllers
     [ApiController]
     public class RemitosController : ControllerBase
     {
-        private readonly IRemitosServicio _remitosServicio;
+        private readonly IUnitOfWork unitOfWork;
         private readonly IMapper _mapper;
 
-        public RemitosController(IRemitosServicio _remitosServicio, IMapper mapper)
+        public RemitosController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this._mapper = mapper;
-            this._remitosServicio = _remitosServicio;
+            this.unitOfWork = unitOfWork;
         }
 
         [HttpGet("ObtenerPorIdConDetalle")]
         public async Task<ActionResult<RemitosRecurso>> ObtenerPorIdConDetalle(int pRemitosId)
         {
-            var remito = await _remitosServicio.ObtenerPorIdConDetalle(pRemitosId);
+            var remito = await unitOfWork.RemitosRepositorio.ObtenerPorIdConDetalle(pRemitosId);
             var remitoRecurso = _mapper.Map<Remitos, RemitosRecurso>(remito);
 
             return Ok(remitoRecurso);
@@ -46,8 +44,8 @@ namespace webapi.api.Controllers
             {
                 var remitoCrear = _mapper.Map<RemitoGuardarRecurso, Remitos>(pRemito);
 
-                var remitoNuevo = await _remitosServicio.AgregarAsync(remitoCrear);
-                var remito = await _remitosServicio.ObtenerPorIdConDetalleYAuditoria(remitoNuevo.Id);
+                var remitoNuevo = unitOfWork.RemitosRepositorio.AgregarAsync(remitoCrear);
+                var remito = await unitOfWork.RemitosRepositorio.ObtenerPorIdConDetalleYAuditoria(remitoNuevo.Id);
                 var remitoRecurso = _mapper.Map<Remitos, RemitosRecurso>(remito);
 
                 return Ok(remitoRecurso);
@@ -63,16 +61,17 @@ namespace webapi.api.Controllers
         public async Task<ActionResult<RemitosRecurso>> AnularRemito(int pId)
         {
             //Guardo
-            var remitoAnular = await _remitosServicio.ObtenerPorIdConDetalle(pId);
+            var remitoAnular = await unitOfWork.RemitosRepositorio.ObtenerPorIdConDetalle(pId);
 
             if (remitoAnular == null)
             {
                 return NotFound();
             }
             
-            await _remitosServicio.Anular(remitoAnular);
+            await unitOfWork.RemitosRepositorio.Anular(remitoAnular);
+            await unitOfWork.CommitAsync();
 
-            var remitoActualizado = await _remitosServicio.ObtenerPorIdConDetalle(pId);
+            var remitoActualizado = await unitOfWork.RemitosRepositorio.ObtenerPorIdConDetalle(pId);
 
             var remitoActualizadoRecurso = _mapper.Map<Remitos, RemitosRecurso>(remitoActualizado);
 
