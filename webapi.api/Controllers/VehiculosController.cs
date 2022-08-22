@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using webapi.core.Modelos;
-using webapi.root;
 using webapi.data.Repositorios;
 using AutoMapper;
 using webapi.api.Recursos;

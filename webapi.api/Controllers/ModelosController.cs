@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.core.Modelos;
-using webapi.root;
 using AutoMapper;
 using webapi.api.Recursos;
 using webapi.data.Repositorios;
