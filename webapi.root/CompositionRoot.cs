@@ -19,30 +19,6 @@ namespace webapi.root
             services.AddScoped(typeof(IRepositorio<>), typeof(Repositorio<>));
            
 
-            //Repositorios            
-            services
-                .AddScoped<ICategoriasRepositorio, CategoriasRepositorio>()
-                .AddScoped<IColoresRepositorio, ColoresRepositorio>()
-                .AddScoped<ICompaniasRepositorio, CompaniasRepositorio>()
-                .AddScoped<IDepositosRepositorio, DepositosRepositorio>()
-                .AddScoped<IEmpleadosRepositorio, EmpleadosRepositorio>()
-                .AddScoped<IMarcasRepositorio, MarcasRepositorio>()
-                .AddScoped<IMarcasChasisRepositorio, MarcasChasisRepositorio>()
-                .AddScoped<IMarcasMotorRepositorio, MarcasMotorRepositorio>()
-                .AddScoped<IModelosRepositorio, ModelosRepositorio>()
-                .AddScoped<ITiposCombustibleRepositorio, TiposCombustibleRepositorio>()
-                .AddScoped<IVehiculosRepositorio, VehiculosRepositorio>()
-                .AddScoped<IVehiculosTipoRepositorio, VehiculosTipoRepositorio>()
-                .AddScoped<IFormulario04DRepositorio, Formulario04DRepositorio>()
-                .AddScoped<IDepositosIslasUbcacionesRepositorio, DepositosIslasUbicacionesRepositorio>()
-                .AddScoped<IDepositosIslasMapaRepositorio, DepositosIslasMapaRepositorio>()
-                .AddScoped<IArticulosStockRepositorio, ArticulosStockRepositorio>()
-                .AddScoped<IArticulosDescarteRepositorio, ArticulosDescarteRepositorio>()
-                .AddScoped<IDesarmeArtDesRepositorio, DesarmeArtDesRepositorio>()
-                .AddScoped<IDesarmeArtDesDetalleRepositorio, DesarmeArtDesDetalleRepositorio>()
-                .AddScoped<IRemitosRepositorio, RemitosRepositorio>()
-                .AddScoped<IArticulosVariosRepositorio, ArticulosVariosRepositorio>();
-
             //Unit of work
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
